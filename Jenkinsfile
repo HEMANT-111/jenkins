@@ -30,3 +30,5 @@ pipeline {
         sh "service httpd restart"
       }
     }
+  }
+}
