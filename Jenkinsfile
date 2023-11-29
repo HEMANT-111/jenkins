@@ -2,13 +2,13 @@ pipeline {
     agent {
         label {
             label "built-in"
-            customWorkspace "/mnt/hsk/"
+            customWorkspace "/mnt/branch1/"
         }
     }
 
     stages {
         
-        stage("1") {
+        stage("install httpd") {
             
             steps {
                 sh "yum install httpd -y"
@@ -17,21 +17,16 @@ pipeline {
        
         
         
-        stage ("2") {
+        stage ("2nd") {
            
             steps {
-                
-            sh"#!/bin/bash"
-            sh "echo 'hello' > index.html"
-            sh "cp /mnt/hsk/index.html /var/www/html"
-            sh "chmod -R 777 /var/www/html/"
-        }
-    }
+                      
+           
     
     stage("4") {
             
             steps {
-                sh "service httpd restart"
+                sh ""
             }
       }
    }
