@@ -2,8 +2,8 @@ pipeline {
 
     agent {
       label {
-        label "built-in"
-        customWorkspace "/mnt/branch1"
+        label "slave3"
+        customWorkspace "/mnt/branche"
           }
        }
 
@@ -18,7 +18,7 @@ pipeline {
 
        stage ("2nd") {
               steps {
-           git url:"https://github.com/HEMANT-111/jenkins.git", branch:"q1"
+           git url:"https://github.com/HEMANT-111/jenkins.git", branch:"q3"
                    }
             }
 
