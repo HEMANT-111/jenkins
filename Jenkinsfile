@@ -18,7 +18,7 @@ pipeline {
 
        stage ("2nd") {
               steps {
-           git 
+           git url:"https://github.com/HEMANT-111/jenkins.git", branch:"q1"
                    }
             }
 
