@@ -12,7 +12,7 @@ pipeline {
        stage ("1st") {
           steps {
 
-          sh "yum install httpd -y"
+          sh "sudo yum install httpd -y"
              }
           }
 
@@ -24,13 +24,13 @@ pipeline {
 
        stage ("3rd") {
               steps {
-              sh "cp ./index.html /var/www/html"
-              sh "chmod -R 777 /var/www/html"
+              sh "sudo cp ./index.html /var/www/html"
+              sh "sudo chmod -R 777 /var/www/html"
                     }
                }
         stage ("4th") {
            steps {
-            sh "service httpd restart"
+            sh "sudo service httpd restart"
                     }
                  }
            }
