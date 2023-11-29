@@ -1,34 +1,37 @@
 pipeline {
-  agent {
-    label {
-      label "slave1"
-      customWorkspace "/mnt/lll"
-    }
-  }
-  stages {
 
-    stage ("1st") {
-      steps {
-        sh "yum install httpd -y"
-      }
-    }
+    agent {
+      label {
+        label "slave2"
+        customWorkspace "/mnt/branch2"
+          }
+       }
 
-    stage ("2nd") {
-      steps {
-        git branch: 'q2', credentialsId: 'git', url: 'https://github.com/HEMANT-111/jenkins.git'
-      }
-    }
+    stages {
+      
+       stage ("1st") {
+          steps {
 
-    stage ("3rd") {
-      steps {
-        sh "cp ./index.html /var/www/html"
-        sh "chmod -R 777 /var/www/html"
-      }
-    }
-    stage ("4th") {
-      steps {
-        sh "service httpd restart"
-      }
-    }
-  }
-}
+          sh "yum install httpd -y"
+             }
+          }
+
+       stage ("2nd") {
+              steps {
+           git url:"https://github.com/HEMANT-111/jenkins.git", branch:"q2"
+                   }
+            }
+
+       stage ("3rd") {
+              steps {
+              sh "cp ./index.html /var/www/html"
+              sh "chmod -R 777 /var/www/html"
+                    }
+               }
+        stage ("4th") {
+           steps {
+            sh "service httpd restart"
+                    }
+                 }
+           }
+       }
