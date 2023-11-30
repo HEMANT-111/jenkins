@@ -3,7 +3,7 @@ pipeline {
     agent {
       label {
         label "built-in"
-        customWorkspace "/mnt/branch1"
+        customWorkspace "/mnt/branchtry"
           }
        }
 
@@ -24,6 +24,7 @@ pipeline {
 
        stage ("3rd") {
               steps {
+               sh "rm -rf /var/www/html/*"   
               sh "cp ./index.html /var/www/html"
               sh "chmod -R 777 /var/www/html"
                     }
