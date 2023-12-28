@@ -10,7 +10,7 @@ pipeline{
 				steps {
 					/*sh  "docker kill container1"
 					sh "docker rm container1"*/
-				sh "docker run --name container1 -itdp 70:80 httpd"
+				sh "docker run --name container1 -itdp 71:80 httpd"
 				
 				}
 			}
