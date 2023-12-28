@@ -1,38 +1,27 @@
-pipeline {
-
-    agent {
-      label {
-        label "slave3"
-        customWorkspace "/mnt/branche"
-          }
-       }
-
-    stages {
-      
-       stage ("1st") {
-          steps {
-
-          sh "sudo yum install httpd -y"
-         sh "sudo yum install git -y"
-             }
-          }
-
-       stage ("2nd") {
-              steps {
-           git url:"https://github.com/HEMANT-111/jenkins.git", branch:"q3"
-                   }
-            }
-
-       stage ("3rd") {
-              steps {
-              sh "sudo cp ./index.html /var/www/html"
-              sh "sudo chmod -R 777 /var/www/html"
-                    }
-               }
-        stage ("4th") {
-           steps {
-            sh "sudo service httpd restart"
-                    }
-                 }
-           }
-       }
+pipeline{
+	agent {
+		node {
+			label "built-in"
+			customWorkspace "/mnt/docker/q3"
+		}
+	}	
+		stages {
+			stage ('create container') {
+				steps {
+					/*sh  "docker kill container1"
+					sh "docker rm container1"*/
+				sh "docker run --name container1 -itdp 300:80 httpd"
+				
+				}
+			}
+			stage ('deploy index') {
+				steps {
+					sh "chmod -R 777 index.html"
+					sh "docker cp index.html container1:/usr/local/apache2/htdocs"
+					
+				}	
+			}
+				
+		
+		}
+}
