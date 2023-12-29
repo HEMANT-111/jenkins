@@ -8,10 +8,10 @@ pipeline{
 		stages {
 			stage ('create container') {
 				steps {
-					/*sh "sudo docker stop container1"*/
+					sh "sudo docker stop container31"
 					/*sh  "sudo docker kill container1"*/
-					/*sh "sudo docker rm container1"*/
-				/*sh "sudo docker run --name container31 -itdp 70:80 httpd"*/
+					sh "sudo docker rm container31"
+				sh "sudo docker run --name container31 -itdp 70:80 httpd"
 				
 				}
 			}
