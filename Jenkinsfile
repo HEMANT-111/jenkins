@@ -11,14 +11,14 @@ pipeline{
 					sh "sudo docker stop container31"
 					/*sh  "sudo docker kill container1"*/
 					sh "sudo docker rm container31"
-				sh "sudo docker run --name container31 -itdp 70:80 httpd"
+				sh "sudo docker run --name container77 -itdp 70:80 httpd"
 				
 				}
 			}
 			stage ('deploy index') {
 				steps {
 					sh "sudo chmod -R 777 index.html"
-					sh "sudo docker cp index.html container31:/usr/local/apache2/htdocs"
+					sh "sudo docker cp index.html container77:/usr/local/apache2/htdocs"
 					
 				}	
 			}
