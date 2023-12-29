@@ -10,14 +10,14 @@ pipeline{
 				steps {
 					/*sh  "docker kill container1"
 					sh "docker rm container1"*/
-				sh "docker run --name container1 -itdp 70:80 httpd"
+				sh "sudo docker run --name container1 -itdp 70:80 httpd"
 				
 				}
 			}
 			stage ('deploy index') {
 				steps {
-					sh "chmod -R 444 index.html"
-					sh "docker cp index.html container1:/usr/local/apache2/htdocs"
+					sh "sudo chmod -R 444 index.html"
+					sh "sudo docker cp index.html container1:/usr/local/apache2/htdocs"
 					
 				}	
 			}
