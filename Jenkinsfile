@@ -1,16 +1,16 @@
 pipeline{
 	agent {
 		node {
-			label "built-in"
+			label "dev-H"
 			customWorkspace "/mnt/docker/q1"
 		}
 	}	
 		stages {
 			stage ('create container') {
 				steps {
-					sh  "docker kill container1"
-					sh "docker rm container1"
-				sh "docker run --name container1 -itdp 71:80 httpd"
+					/*sh  "docker kill container1"
+					sh "docker rm container1"*/
+				sh "docker run --name container1 -itdp 70:80 httpd"
 				
 				}
 			}
